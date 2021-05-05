@@ -63,6 +63,8 @@ namespace Soh_Cah_Toa_Forms_App
             this.inputA.Name = "inputA";
             this.inputA.Size = new System.Drawing.Size(60, 23);
             this.inputA.TabIndex = 2;
+            this.inputA.Text = "0";
+            this.inputA.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.inputA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.inputA_KeyPress);
             // 
             // yAngle
@@ -71,6 +73,8 @@ namespace Soh_Cah_Toa_Forms_App
             this.yAngle.Name = "yAngle";
             this.yAngle.Size = new System.Drawing.Size(60, 23);
             this.yAngle.TabIndex = 3;
+            this.yAngle.Text = "0";
+            this.yAngle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.yAngle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.yAngle_KeyPress);
             // 
             // inputB
@@ -79,6 +83,8 @@ namespace Soh_Cah_Toa_Forms_App
             this.inputB.Name = "inputB";
             this.inputB.Size = new System.Drawing.Size(60, 23);
             this.inputB.TabIndex = 4;
+            this.inputB.Text = "0";
+            this.inputB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.inputB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.inputB_KeyPress);
             // 
             // inputC
@@ -87,6 +93,8 @@ namespace Soh_Cah_Toa_Forms_App
             this.inputC.Name = "inputC";
             this.inputC.Size = new System.Drawing.Size(60, 23);
             this.inputC.TabIndex = 5;
+            this.inputC.Text = "0";
+            this.inputC.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.inputC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.inputC_KeyPress);
             // 
             // xAngle
@@ -95,6 +103,8 @@ namespace Soh_Cah_Toa_Forms_App
             this.xAngle.Name = "xAngle";
             this.xAngle.Size = new System.Drawing.Size(60, 23);
             this.xAngle.TabIndex = 6;
+            this.xAngle.Text = "0";
+            this.xAngle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.xAngle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.xAngle_KeyPress);
             // 
             // outputField
@@ -181,7 +191,7 @@ namespace Soh_Cah_Toa_Forms_App
             this.Controls.Add(this.picture);
             this.Controls.Add(this.calculateBtn);
             this.Name = "window";
-            this.Text = "Form1";
+            this.Text = "Calculator, by David Barkanyi";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picture)).EndInit();
             this.ResumeLayout(false);
