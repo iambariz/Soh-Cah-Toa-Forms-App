@@ -71,6 +71,7 @@ namespace Soh_Cah_Toa_Forms_App
             this.yAngle.Name = "yAngle";
             this.yAngle.Size = new System.Drawing.Size(60, 23);
             this.yAngle.TabIndex = 3;
+            this.yAngle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.yAngle_KeyPress);
             // 
             // inputB
             // 
@@ -94,6 +95,7 @@ namespace Soh_Cah_Toa_Forms_App
             this.xAngle.Name = "xAngle";
             this.xAngle.Size = new System.Drawing.Size(60, 23);
             this.xAngle.TabIndex = 6;
+            this.xAngle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.xAngle_KeyPress);
             // 
             // outputField
             // 
