@@ -27,9 +27,11 @@ namespace Soh_Cah_Toa_Forms_App
 
         }
 
-        public double calcHyp(double sideA, double sideB)
+        public double calcHyp(double sideOne, double sideTwo)
         {
-            return Math.Round(, 2);
+            return Math.Round(Math.Sqrt(Math.Pow(sideOne, 2) + Math.Pow(sideTwo, 2)), 2);
         }
+
+
     }
 }
