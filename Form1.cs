@@ -31,8 +31,28 @@ namespace Soh_Cah_Toa_Forms_App
             double Bside = Double.Parse(inputB.Text);
             double Cside = Double.Parse(inputC.Text);
             double zAng = 90;
+            double[] sides = new double[] { Aside, Bside, Cside};
 
-            outputField.Text = yAng.ToString();
+            if(xAng > 0)
+            {
+                yAng = zAng - xAng;
+            }
+            if(yAng > 0)
+            {
+                xAng = zAng - yAng;
+            }
+            else
+            {
+                //error:no given angles;
+            }
+            if(Aside > 0 && Bside > 0)
+            {
+                Cside = calcHyp(Aside, Bside);
+            }
+            if(Cside > 0)
+
+
+
 
         }
         //Some test below
