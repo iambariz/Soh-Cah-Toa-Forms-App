@@ -43,13 +43,19 @@ namespace Soh_Cah_Toa_Forms_App
             this.picture = new System.Windows.Forms.PictureBox();
             this.yAngleLabel = new System.Windows.Forms.Label();
             this.xAngelLabel = new System.Windows.Forms.Label();
+            this.ySinText = new System.Windows.Forms.Label();
+            this.yCosText = new System.Windows.Forms.Label();
+            this.yTanText = new System.Windows.Forms.Label();
+            this.xSinText = new System.Windows.Forms.Label();
+            this.xCosText = new System.Windows.Forms.Label();
+            this.xTanText = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picture)).BeginInit();
             this.SuspendLayout();
             // 
             // calculateBtn
             // 
             this.calculateBtn.AccessibleName = "";
-            this.calculateBtn.Location = new System.Drawing.Point(658, 415);
+            this.calculateBtn.Location = new System.Drawing.Point(625, 411);
             this.calculateBtn.Name = "calculateBtn";
             this.calculateBtn.Size = new System.Drawing.Size(107, 23);
             this.calculateBtn.TabIndex = 0;
@@ -89,7 +95,7 @@ namespace Soh_Cah_Toa_Forms_App
             // 
             // inputC
             // 
-            this.inputC.Location = new System.Drawing.Point(335, 169);
+            this.inputC.Location = new System.Drawing.Point(334, 169);
             this.inputC.Name = "inputC";
             this.inputC.Size = new System.Drawing.Size(60, 23);
             this.inputC.TabIndex = 5;
@@ -172,11 +178,71 @@ namespace Soh_Cah_Toa_Forms_App
             this.xAngelLabel.TabIndex = 12;
             this.xAngelLabel.Text = "X Angle";
             // 
+            // ySinText
+            // 
+            this.ySinText.AutoSize = true;
+            this.ySinText.Location = new System.Drawing.Point(195, 48);
+            this.ySinText.Name = "ySinText";
+            this.ySinText.Size = new System.Drawing.Size(47, 15);
+            this.ySinText.TabIndex = 13;
+            this.ySinText.Text = "Y Sin = ";
+            // 
+            // yCosText
+            // 
+            this.yCosText.AutoSize = true;
+            this.yCosText.Location = new System.Drawing.Point(195, 63);
+            this.yCosText.Name = "yCosText";
+            this.yCosText.Size = new System.Drawing.Size(51, 15);
+            this.yCosText.TabIndex = 14;
+            this.yCosText.Text = "Y Cos = ";
+            // 
+            // yTanText
+            // 
+            this.yTanText.AutoSize = true;
+            this.yTanText.Location = new System.Drawing.Point(195, 78);
+            this.yTanText.Name = "yTanText";
+            this.yTanText.Size = new System.Drawing.Size(52, 15);
+            this.yTanText.TabIndex = 15;
+            this.yTanText.Text = "Y Tan =  ";
+            // 
+            // xSinText
+            // 
+            this.xSinText.AutoSize = true;
+            this.xSinText.Location = new System.Drawing.Point(307, 48);
+            this.xSinText.Name = "xSinText";
+            this.xSinText.Size = new System.Drawing.Size(47, 15);
+            this.xSinText.TabIndex = 16;
+            this.xSinText.Text = "X Sin = ";
+            // 
+            // xCosText
+            // 
+            this.xCosText.AutoSize = true;
+            this.xCosText.Location = new System.Drawing.Point(307, 63);
+            this.xCosText.Name = "xCosText";
+            this.xCosText.Size = new System.Drawing.Size(51, 15);
+            this.xCosText.TabIndex = 17;
+            this.xCosText.Text = "X Cos = ";
+            // 
+            // xTanText
+            // 
+            this.xTanText.AutoSize = true;
+            this.xTanText.Location = new System.Drawing.Point(307, 78);
+            this.xTanText.Name = "xTanText";
+            this.xTanText.Size = new System.Drawing.Size(49, 15);
+            this.xTanText.TabIndex = 18;
+            this.xTanText.Text = "X Tan = ";
+            // 
             // window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.xTanText);
+            this.Controls.Add(this.xCosText);
+            this.Controls.Add(this.xSinText);
+            this.Controls.Add(this.yTanText);
+            this.Controls.Add(this.yCosText);
+            this.Controls.Add(this.ySinText);
             this.Controls.Add(this.xAngelLabel);
             this.Controls.Add(this.yAngleLabel);
             this.Controls.Add(this.LabelSideB);
@@ -215,6 +281,13 @@ namespace Soh_Cah_Toa_Forms_App
         private System.Windows.Forms.PictureBox picture;
         private System.Windows.Forms.Label yAngleLabel;
         private System.Windows.Forms.Label xAngelLabel;
+        private System.Windows.Forms.Label ySinText;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label yCosText;
+        private System.Windows.Forms.Label yTanText;
+        private System.Windows.Forms.Label xSinText;
+        private System.Windows.Forms.Label xCosText;
+        private System.Windows.Forms.Label xTanText;
     }
 }
 
