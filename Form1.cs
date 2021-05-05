@@ -12,6 +12,7 @@ namespace Soh_Cah_Toa_Forms_App
 {
     public partial class window : Form
     {
+
         public window()
         {
             InitializeComponent();
@@ -24,8 +25,14 @@ namespace Soh_Cah_Toa_Forms_App
 
         private void calculateBtn_Click(object sender, EventArgs e)
         {
+            double yAng = Double.Parse(yAngle.Text);
+            double xAng = Double.Parse(xAngle.Text);
+            double Aside = Double.Parse(inputA.Text);
+            double Bside = Double.Parse(inputB.Text);
+            double Cside = Double.Parse(inputC.Text);
+            double zAng = 90;
 
-
+            outputField.Text = yAng.ToString();
 
         }
         //Some test below
