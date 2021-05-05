@@ -32,8 +32,23 @@ namespace Soh_Cah_Toa_Forms_App
             double Cside = Double.Parse(inputC.Text);
             double zAng = 90;
             double[] sides = new double[] { Aside, Bside, Cside};
+            double[] legs = new double[] { Aside, Bside };
+            bool AsideValid = false;
+            bool BsideValid = false;
+            bool CsideValid = false;
 
-            if(xAng > 0)
+            bool[] sidesValid = new bool[] { AsideValid, BsideValid, CsideValid };
+
+
+            for (int i = 0; i < sides.Length; i++)
+            {
+                if (sides[i] > 0)
+                {
+                    sidesValid[i] = true;
+                }
+            }
+
+            if (xAng > 0)
             {
                 yAng = zAng - xAng;
             }
@@ -45,11 +60,34 @@ namespace Soh_Cah_Toa_Forms_App
             {
                 //error:no given angles;
             }
-            if(Aside > 0 && Bside > 0)
+            //sidesValid[0] = A, sidesValid[1] B, sidesValid[2] C
+            if (sidesValid[0] && sidesValid[1])
             {
                 Cside = calcHyp(Aside, Bside);
             }
-            if(Cside > 0)
+            if(sidesValid[2] && sidesValid[1] || sidesValid[0])
+            {
+                if(sidesValid[1] && !sidesValid[0])
+                {
+                    Aside = calcSide(Bside, Cside);
+                }
+                if (sidesValid[0] && !sidesValid[1])
+                {
+                    Bside = calcSide(Bside, Cside);
+                }
+            }
+            if(yAng > 0)
+            {
+
+            }
+
+
+
+
+
+            inputA.Text = Aside.ToString();
+            inputB.Text = Bside.ToString();
+            inputC.Text = Cside.ToString();
 
 
 
