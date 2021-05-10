@@ -25,102 +25,120 @@ namespace Soh_Cah_Toa_Forms_App
 
         public void calculateBtn_Click(object sender, EventArgs e)
         {
-            double yAng = Double.Parse(yAngle.Text);
-            double xAng = Double.Parse(xAngle.Text);
-            double Aside = Double.Parse(inputA.Text);
-            double Bside = Double.Parse(inputB.Text);
-            double Cside = Double.Parse(inputC.Text);
-            double zAng = 90;
-            double[] sides = new double[] { Aside, Bside, Cside };
-            double[] legs = new double[] { Aside, Bside };
-            bool AsideValid = false;
-            bool BsideValid = false;
-            bool CsideValid = false;
+            try{
+                double yAng = Double.Parse(yAngle.Text);
+                double xAng = Double.Parse(xAngle.Text);
+                double Aside = Double.Parse(inputA.Text);
+                double Bside = Double.Parse(inputB.Text);
+                double Cside = Double.Parse(inputC.Text);
+                double zAng = 90;
+                double[] sides = new double[] { Aside, Bside, Cside };
+                double[] legs = new double[] { Aside, Bside };
+                bool AsideValid = false;
+                bool BsideValid = false;
+                bool CsideValid = false;
 
-            bool[] sidesValid = new bool[] { AsideValid, BsideValid, CsideValid };
+                bool[] sidesValid = new bool[] { AsideValid, BsideValid, CsideValid };
 
 
-            for (int i = 0; i < sides.Length; i++)
-            {
-                if (sides[i] > 0)
+                for (int i = 0; i < sides.Length; i++)
                 {
-                    sidesValid[i] = true;
+                    if (sides[i] > 0)
+                    {
+                        sidesValid[i] = true;
+                    }
                 }
-            }
 
 
-            //sidesValid[0] = A, sidesValid[1] B, sidesValid[2] C
-            if (sidesValid[0] && sidesValid[1])
-            {
-                Cside = calcHyp(Aside, Bside);
-            }
-            if (sidesValid[2] && sidesValid[1] || sidesValid[0])
-            {
-                if (sidesValid[1] && !sidesValid[0])
+                //sidesValid[0] = A, sidesValid[1] B, sidesValid[2] C
+                if (sidesValid[0] && sidesValid[1])
                 {
-                    Aside = calcSide(Bside, Cside);
+                    Cside = calcHyp(Aside, Bside);
                 }
-                if (sidesValid[0] && !sidesValid[1])
+                if (sidesValid[2] && sidesValid[1] || sidesValid[0])
                 {
-                    Bside = calcSide(Bside, Cside);
+                    if (sidesValid[1] && !sidesValid[0])
+                    {
+                        Aside = calcSide(Bside, Cside);
+                    }
+                    if (sidesValid[0] && !sidesValid[1])
+                    {
+                        Bside = calcSide(Aside, Cside);
+                    }
                 }
-            }
 
-            //sidesValid[0] = A, sidesValid[1] B, sidesValid[2] C
-            if (xAng > 0)
-            {
+                //sidesValid[0] = A, sidesValid[1] B, sidesValid[2] C
+                if (yAng > 0 && xAng == 0)
+                {
+                    xAng = zAng - yAng;
+                    xAngle.Text = xAng.ToString();
+                    //If we've got an Y angle and C side
+                    if (sidesValid[1])
+                    {
+                        Aside = Math.Round(Math.Sin(ConvertToRadians(xAng)) * Cside, 2);
+                        Bside = calcSide(Aside, Cside);
+                    }
+                    //If we've got an Y angle and B side
+                    if (sidesValid[1])
+                    {
+                        Bside = Math.Round(Math.Tan(ConvertToRadians(yAng)) * Aside, 2);
+                        Cside = calcHyp(Aside, Bside);
+                    }
+                    //If we've got an X angle and B side
+                    if (sidesValid[0])
+                    {
+                        Bside = Math.Round(Math.Cos(ConvertRadiansToDegrees(yAng)) / Aside, 2);
+                        Cside = calcHyp(Aside, Bside);
+                    }
+
+                }
+                //sidesValid[0] = A - Opp , sidesValid[1] B - Adj, sidesValid[2] C - Hyp
+                if (xAng > 0 && yAng == 0)
+                {
                 yAng = zAng - xAng;
                 yAngle.Text = yAng.ToString();
-
-                if (sidesValid[1])
-                {
-
-                }
-            }
-            //sidesValid[0] = A, sidesValid[1] B, sidesValid[2] C
-            if (yAng > 0)
-            {
-                xAng = zAng - yAng;
-                xAngle.Text = xAng.ToString();
-                //If we've got an X angle and C side
-                if (sidesValid[2])
+                //If we've got an X angle and C side - Sin 
+                if (sidesValid[2] && !sidesValid[1] && !sidesValid[0])
                 {
                     Aside = Math.Round(Math.Sin(ConvertToRadians(xAng)) * Cside,2);
                     Bside = calcSide(Aside, Cside);
                 }
-                //If we've got an X angle and B side
-                if (sidesValid[1])
+                //If we've got an X angle and B side - Tan
+                if (sidesValid[1] && !sidesValid[0] && !sidesValid[2])
                 {
                     Aside = Math.Round(Math.Tan(ConvertToRadians(xAng)) * Bside, 2);
                     Cside = calcHyp(Aside, Bside);
-                }
-                //If we've got an X angle and B side
-                if (sidesValid[0])
+                    } 
+                //If we've got an X angle and A side - Sinn
+                if (sidesValid[0] && !sidesValid[2] && !sidesValid[1])
                 {
-                    Aside = Math.Round(Math.Cos(ConvertRadiansToDegrees(xAng)) / Aside, 2);
-                    Cside = calcHyp(Aside, Bside);
+                    Cside = Math.Round(Aside / Math.Sin(ConvertToRadians(xAng)), 2);
+                        Bside = calcSide(Aside, Cside);
+
+                    }
+
+                }
+                else
+                {
+                    outputField.Text = "Error: Please give at least 1 angle";
                 }
 
+
+
+                inputA.Text = Aside.ToString();
+                inputB.Text = Bside.ToString();
+                inputC.Text = Cside.ToString();
+
+
             }
-            else
+            catch (Exception error)
             {
-                outputField.Text = "Error: Please give at least 1 angle"
+                outputField.Text = error.Message;
             }
-
-
-
-            inputA.Text = Aside.ToString();
-            inputB.Text = Bside.ToString();
-            inputC.Text = Cside.ToString();
-
 
 
 
         }
-        //Some test below
-        //           double result = calcHyp(Double.Parse(inputA.Text), Double.Parse(inputB.Text));
-        //            inputC.Text = result.ToString();
-        //Calculations below
 
         public double calcHyp(double sideOne, double sideTwo)
         {
