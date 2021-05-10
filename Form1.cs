@@ -26,6 +26,7 @@ namespace Soh_Cah_Toa_Forms_App
         public void calculateBtn_Click(object sender, EventArgs e)
         {
             try{
+                outputField.Text = " ";
                 double yAng = Double.Parse(yAngle.Text);
                 double xAng = Double.Parse(xAngle.Text);
                 double Aside = Double.Parse(inputA.Text);
@@ -73,21 +74,21 @@ namespace Soh_Cah_Toa_Forms_App
                     xAng = zAng - yAng;
                     xAngle.Text = xAng.ToString();
                     //If we've got an Y angle and C side
-                    if (sidesValid[1])
+                    if (sidesValid[2] && !sidesValid[1] && !sidesValid[0])
                     {
-                        Aside = Math.Round(Math.Sin(ConvertToRadians(xAng)) * Cside, 2);
-                        Bside = calcSide(Aside, Cside);
+                        Bside = Math.Round(Math.Sin(ConvertToRadians(yAng)) * Cside, 2);
+                        Aside = calcSide(Bside, Cside);
                     }
                     //If we've got an Y angle and B side
-                    if (sidesValid[1] && !sidesValid[0] && !sidesValid[2])
+                    if (sidesValid[0] && !sidesValid[1] && !sidesValid[2])
                     {
-                        Aside = Math.Round(Math.Tan(ConvertToRadians(xAng)) * Bside, 2);
+                        Bside = Math.Round(Math.Tan(ConvertToRadians(yAng)) * Aside, 2);
                         Cside = calcHyp(Aside, Bside);
                     }
                     //If we've got an X angle and A side
                     if (sidesValid[1] && !sidesValid[0] && !sidesValid[2])
                     {
-                        Cside = Math.Round(Bside / Math.Sin(ConvertToRadians(xAng)), 2);
+                        Cside = Math.Round(Bside / Math.Sin(ConvertToRadians(yAng)), 2);
                         Aside = calcSide(Bside, Cside);
                     }
 
@@ -117,13 +118,13 @@ namespace Soh_Cah_Toa_Forms_App
                     }
 
                 }
-                else
+                if(yAng == 0 && xAng == 0)
                 {
-                    outputField.Text = "Error: Please give at least 1 angle";
+                    outputField.Text = "You haven't gave any angle";
                 }
 
 
-
+                outputField.Text = "Error: Please give at least 1 angle";
                 inputA.Text = Aside.ToString();
                 inputB.Text = Bside.ToString();
                 inputC.Text = Cside.ToString();
@@ -135,7 +136,7 @@ namespace Soh_Cah_Toa_Forms_App
                 outputField.Text = error.Message;
             }
 
-
+            outputField.Text = "Calculation completed";
 
         }
 
