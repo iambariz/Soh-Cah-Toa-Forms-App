@@ -67,7 +67,7 @@ namespace Soh_Cah_Toa_Forms_App
                     }
                 }
 
-                //sidesValid[0] = A, sidesValid[1] B, sidesValid[2] C
+                //sidesValid[0] = A - Adj , sidesValid[1] B - Opp, sidesValid[2] C - Hyp
                 if (yAng > 0 && xAng == 0)
                 {
                     xAng = zAng - yAng;
@@ -79,16 +79,16 @@ namespace Soh_Cah_Toa_Forms_App
                         Bside = calcSide(Aside, Cside);
                     }
                     //If we've got an Y angle and B side
-                    if (sidesValid[1])
+                    if (sidesValid[1] && !sidesValid[0] && !sidesValid[2])
                     {
-                        Bside = Math.Round(Math.Tan(ConvertToRadians(yAng)) * Aside, 2);
+                        Aside = Math.Round(Math.Tan(ConvertToRadians(xAng)) * Bside, 2);
                         Cside = calcHyp(Aside, Bside);
                     }
-                    //If we've got an X angle and B side
-                    if (sidesValid[0])
+                    //If we've got an X angle and A side
+                    if (sidesValid[1] && !sidesValid[0] && !sidesValid[2])
                     {
-                        Bside = Math.Round(Math.Cos(ConvertRadiansToDegrees(yAng)) / Aside, 2);
-                        Cside = calcHyp(Aside, Bside);
+                        Cside = Math.Round(Bside / Math.Sin(ConvertToRadians(xAng)), 2);
+                        Aside = calcSide(Bside, Cside);
                     }
 
                 }
@@ -109,12 +109,11 @@ namespace Soh_Cah_Toa_Forms_App
                     Aside = Math.Round(Math.Tan(ConvertToRadians(xAng)) * Bside, 2);
                     Cside = calcHyp(Aside, Bside);
                     } 
-                //If we've got an X angle and A side - Sinn
+                //If we've got an X angle and A side - Sin
                 if (sidesValid[0] && !sidesValid[2] && !sidesValid[1])
                 {
                     Cside = Math.Round(Aside / Math.Sin(ConvertToRadians(xAng)), 2);
-                        Bside = calcSide(Aside, Cside);
-
+                    Bside = calcSide(Aside, Cside);
                     }
 
                 }
