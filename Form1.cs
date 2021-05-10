@@ -20,7 +20,7 @@ namespace Soh_Cah_Toa_Forms_App
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            outputField.Text = "Welcome to my program! \r\nThis program calculates the side of right angle triangle and the Sin Cos and Tan";
+            outputField.Text = "Welcome to my program! \r\nThis program calculates the side of right angle triangle and the  \r\n Please give at least 1 side and 1 angle";
         }
 
         public void calculateBtn_Click(object sender, EventArgs e)
@@ -38,7 +38,6 @@ namespace Soh_Cah_Toa_Forms_App
                 bool AsideValid = false;
                 bool BsideValid = false;
                 bool CsideValid = false;
-
                 bool[] sidesValid = new bool[] { AsideValid, BsideValid, CsideValid };
 
 

@@ -210,12 +210,10 @@ namespace Soh_Cah_Toa_Forms_App
         private System.Windows.Forms.TextBox outputField;
         private System.Windows.Forms.Label LabelSideA;
         private System.Windows.Forms.Label LabelSideC;
-        private System.Windows.Forms.Label LabelB;
         private System.Windows.Forms.Label LabelSideB;
         private System.Windows.Forms.PictureBox picture;
         private System.Windows.Forms.Label yAngleLabel;
         private System.Windows.Forms.Label xAngelLabel;
-        private System.Windows.Forms.Label label1;
     }
 }
 
