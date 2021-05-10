@@ -23,7 +23,7 @@ namespace Soh_Cah_Toa_Forms_App
             outputField.Text = "Welcome to my program! \r\nThis program calculates the side of right angle triangle and the Sin Cos and Tan";
         }
 
-        private void calculateBtn_Click(object sender, EventArgs e)
+        public void calculateBtn_Click(object sender, EventArgs e)
         {
             double yAng = Double.Parse(yAngle.Text);
             double xAng = Double.Parse(xAngle.Text);
@@ -66,22 +66,45 @@ namespace Soh_Cah_Toa_Forms_App
                 }
             }
 
+            //sidesValid[0] = A, sidesValid[1] B, sidesValid[2] C
             if (xAng > 0)
             {
                 yAng = zAng - xAng;
                 yAngle.Text = yAng.ToString();
+
+                if (sidesValid[1])
+                {
+
+                }
             }
+            //sidesValid[0] = A, sidesValid[1] B, sidesValid[2] C
             if (yAng > 0)
             {
                 xAng = zAng - yAng;
                 xAngle.Text = xAng.ToString();
+                //If we've got an X angle and C side
+                if (sidesValid[2])
+                {
+                    Aside = Math.Round(Math.Sin(ConvertToRadians(xAng)) * Cside,2);
+                    Bside = calcSide(Aside, Cside);
+                }
+                //If we've got an X angle and B side
+                if (sidesValid[1])
+                {
+                    Aside = Math.Round(Math.Tan(ConvertToRadians(xAng)) * Bside, 2);
+                    Cside = calcHyp(Aside, Bside);
+                }
+                //If we've got an X angle and B side
+                if (sidesValid[0])
+                {
+                    Aside = Math.Round(Math.Cos(ConvertRadiansToDegrees(xAng)) / Aside, 2);
+                    Cside = calcHyp(Aside, Bside);
+                }
 
-                double opposite = Bside;
-                double adjacent = Aside;
             }
             else
             {
-                //error:no given angles;
+                outputField.Text = "Error: Please give at least 1 angle"
             }
 
 
@@ -107,6 +130,16 @@ namespace Soh_Cah_Toa_Forms_App
         public double calcSide(double side, double hyp)
         {
             return Math.Round(Math.Sqrt(Math.Pow(hyp, 2) - Math.Pow(side, 2)), 2);
+        }
+
+        public static double ConvertRadiansToDegrees(double radians)
+        {
+            return (180 / Math.PI) * radians;
+        }
+
+        public double ConvertToRadians(double angle)
+        {
+            return (Math.PI / 180) * angle;
         }
 
         public double calcSine(double opp, double hyp)
